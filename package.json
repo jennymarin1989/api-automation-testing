@@ -1,0 +1,15 @@
+{
+  "name": "api-testing",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run"
+  },
+  "author": "Jenny",
+  "license": "ISC",
+  "dependencies": {
+    "cypress-plugin-api": "^2.11.2"
+  }
+}
