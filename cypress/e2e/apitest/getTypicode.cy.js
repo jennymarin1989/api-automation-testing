@@ -10,12 +10,12 @@ describe('use GET method to get data from typicode', () => {
   it('visit url and get data from typicode', () => {
     cy.request({
       method: 'GET',
-      url: '/posts' //sin hacer visit solo haciendo get sobre la url y declarando los parametros
+      url: '/posts'
     });
   });
 
   it('visit url and get data from typicode', () => {
-    cy.request('GET', '/posts'); //sin necesidad de declarar los parametros ( se puede declarar de esta manera tanto el GET y DELETE q son parametros que no tienes q enviar nada en el body)
+    cy.request('GET', '/posts'); //in this case there is not need to send object with params
   });
 
   it('get data from typicode and get status code', () => {
@@ -57,11 +57,10 @@ describe('use GET method to get data from typicode', () => {
       expect(response.status).to.eq(200);
       expect(response.body).to.be.a('object');
       Object.values(response.body).forEach((value) => {
-        // No es necesario declarar una constante e importarla para ver si es un string o un number
         expect(typeof value === 'number' || typeof value === 'string').to.be.true;
       });
 
-      // Se puede comprobar en la misma aserción si es un string o un number además de comprobar el valor exacto que tiene
+      //It's possible to check in same assertion the type of data and the value
       expect(response.body['title']).to.be.a('string').to.eq('sunt aut facere repellat provident occaecati excepturi optio reprehenderit');
       expect(response.body['userId']).to.be.a('number').to.eq(1);
       expect(response.body['body'])
@@ -72,7 +71,6 @@ describe('use GET method to get data from typicode', () => {
     });
   });
 
-  // Está muy bien te añado 2 formas distintas de hacerlo (aunque la que has empleado es perfecta)
   it('get data from a typicode/post1/comments, check its status code, type of response body and assert over object with id 4', () => {
     cy.request('/posts/1/comments').should((response) => {
       expect(response.status).to.eq(200);
@@ -93,8 +91,7 @@ describe('use GET method to get data from typicode', () => {
       expect(response.body).to.be.an('array');
       expect(response.body).to.have.length(5);
 
-      // Usando find para buscar un id en especifico
-
+      // Using find
       const id_4 = response.body.find((alias) => alias.id === 4);
       expect(id_4).to.exist;
       expect(id_4.email).to.be.a('string');
@@ -106,7 +103,7 @@ describe('use GET method to get data from typicode', () => {
     });
   });
 
-  // Usando some para buscar un id en especifico
+  // Using some to find a specific ID
   it('Checks data for id = 4 using some', () => {
     cy.request({
       method: 'GET',
@@ -116,7 +113,7 @@ describe('use GET method to get data from typicode', () => {
       expect(response.body).to.be.an('array');
       expect(response.body).to.have.length(5);
 
-      // Buscar directamente sobre el id === 4 usando some (personalmente prefiero como tu lo has hecho o con find)
+      //Find the Id == 4 and check values of email and name
       expect(response.body.some(({ id, email, name }) => id === 4 && email === 'Lew@alysha.tv' && name === 'alias odio sit')).to.be.true;
     });
   });
