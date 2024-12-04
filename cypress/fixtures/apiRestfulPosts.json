@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Objeto creado por Tester A",
+    "data": {
+      "year": 2024,
+      "price": 10,
+      "CPU model": "Api testing with Cypress",
+      "Hard disk size": "1 TB"
+    }
+  }
+]

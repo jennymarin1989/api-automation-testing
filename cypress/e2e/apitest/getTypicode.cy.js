@@ -1,6 +1,6 @@
 describe('use GET method to get data from typicode', () => {
   it('visit url and get data from typicode', () => {
-    cy.visit('/'); //con visit url
+    cy.visit('/');
     cy.request({
       method: 'GET',
       url: '/posts'

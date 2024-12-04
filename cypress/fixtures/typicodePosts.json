@@ -1,0 +1,30 @@
+[
+  {
+    "userID": 1,
+    "title": "API testing 1",
+    "body": "first post"
+  },
+
+  {
+    "userID": 2,
+    "title": "API testing 2",
+    "body": "second post "
+  },
+
+  {
+    "userID": 3,
+    "title": "API testing 3",
+    "body": "third post"
+  },
+  {
+    "userID": 4,
+    "title": "API testing 4",
+    "body": "fourth post"
+  },
+  {
+    "id": 5,
+    "userID": 1,
+    "title": "news",
+    "body": "post updated"
+  }
+]
