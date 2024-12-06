@@ -76,7 +76,7 @@ describe('use POST and PUT on typicode api ', () => {
     cy.get('@apiPosts').then((apiPost) => {
       cy.request('POST', 'https://api.restful-api.dev/objects', apiPost[0]).then((response) => {
         expect(response.status).to.eq(200);
-        expect(response.duration).not.to.be.greaterThan(500);
+        expect(response.duration).not.to.be.greaterThan(1000);
         expect(response.body).to.deep.include(apiPost[0]);
         cy.wrap(response.body.id).as('objectID');
       });
@@ -86,6 +86,25 @@ describe('use POST and PUT on typicode api ', () => {
           expect(response.body).to.deep.include(apiPost[0]);
         });
         cy.request('DELETE', `https://api.restful-api.dev/objects/${objectID}`);
+      });
+    });
+  });
+
+  it('Create an object with POST, update the price and hard disk size', () => {
+    cy.get('@apiPosts').then((post) => {
+      cy.request('POST', 'https://api.restful-api.dev/objects', post[1]).then((response) => {
+        expect(response.status).to.eq(200);
+        expect(response.duration).not.to.be.greaterThan(1000);
+        expect(response.body).to.deep.include(post[1]);
+        cy.wrap(response.body.id).as('userId');
+      });
+
+      cy.get('@userId').then((userId) => {
+        cy.request('PUT', `https://api.restful-api.dev/objects/${userId}`, post[2]).then((response) => {
+          expect(response.status).to.eq(200);
+          expect(response.duration).not.to.be.greaterThan(1000);
+          expect(response.body).to.deep.include(post[2]);
+        });
       });
     });
   });

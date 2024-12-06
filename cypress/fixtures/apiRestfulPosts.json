@@ -7,5 +7,25 @@
       "CPU model": "Api testing with Cypress",
       "Hard disk size": "1 TB"
     }
+  },
+
+  {
+    "name": "Objeto creado por Tester B",
+    "data": {
+      "year": 2024,
+      "price": 50,
+      "CPU model": "Api testing with Cypress",
+      "Hard disk size": "10 GB"
+    }
+  },
+
+  {
+    "name": "Objeto creado por Tester B",
+    "data": {
+      "year": 2024,
+      "price": 200,
+      "CPU model": "Api testing with Cypress",
+      "Hard disk size": "100 GB"
+    }
   }
 ]
